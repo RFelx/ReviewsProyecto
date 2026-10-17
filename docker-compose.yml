@@ -1,0 +1,16 @@
+  services:
+    db:
+      image: postgres:15-alpine
+      container_name: review_frontend
+      restart: always
+      environment:
+        POSTGRES_USER: 
+        POSTGRES_PASSWORD: 
+        POSTGRES_DB: 
+      ports:
+        - "5432:5432"
+      volumes:
+        - postgres_data31:/var/lib/postgresql/data
+
+  volumes:
+    postgres_data31:
