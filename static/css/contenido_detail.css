@@ -1,0 +1,89 @@
+.detalle-container {
+    padding: 30px;
+}
+
+.detalle-card {
+    background-color: #fff59d;
+    color: #333333;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.detalle-img {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.detalle-titulo {
+    color: rgb(149, 6, 6);
+    margin-top: 0;
+}
+
+.seccion-resenas {
+    margin-top: 40px;
+}
+
+.resena-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.resena-meta {
+    font-size: 13px;
+    color: #777777;
+}
+
+.resena-form-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 1px solid #ddd;
+}
+
+.resena-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resena-input-score {
+    padding: 5px;
+    width: 100px;
+}
+
+.resena-textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.btn-publicar {
+    background: rgb(149, 6, 6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-publicar:hover {
+    background: #b71c1c;
+}
+
+.login-aviso {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.login-aviso a {
+    color: rgb(149, 6, 6);
+    font-weight: bold;
+}

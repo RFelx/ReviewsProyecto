@@ -1,0 +1,13 @@
+{% extends 'nav.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <section class="bienvenida">
+        <h2>Bienvenido a la página principal</h2>
+        <p>Inicio</p>
+
+        {% if not user.is_authenticated %}
+        {% endif %}
+    </section>
+{% endblock %}

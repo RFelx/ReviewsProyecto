@@ -1,0 +1,50 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block title %}Catalogo de Contenido{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/lista_contenido.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="catalogo-container">
+        <h2>Catalogo de Contenido</h2>
+        
+        <div class="contenido-lista">
+            {% for item in contenidos %}
+                <div class="contenido-fila">
+                    <h3 class="contenido-titulo">
+                        <a href="{% url 'detalle_contenido' item.pk %}">{{ item.nombre }}</a>
+                    </h3>
+                    
+                    <div class="contenido-cuerpo">
+                        <div class="contenido-col-izquierda">
+                            <div class="contenido-img">
+                                {% if item.imagen %}
+                                    <img src="{{ item.imagen.url }}" alt="{{ item.nombre }}">
+                                {% else %}
+                                    <img src="{% static 'image/usuario.png' %}" alt="Imagen por defecto">
+                                {% endif %}
+                            </div>
+                            <div class="contenido-generos">
+                                <span>Género:</span>
+                                <p>{{ item.categoria }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contenido-col-derecha">
+                            <p class="contenido-descripcion">
+                                Fecha de estreno: {{ item.fecha_estreno|default:"No especificada" }}<br>
+                                {% if item.escritor %}Escritor: {{ item.escritor.nombre }}<br>{% endif %}
+                                {% if item.productora %}Productora: {{ item.productora.nombre }}{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="sin-contenido">No hay contenido registrado en este momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block title %}{{ contenido.nombre }} - Detalle{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contenido_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="catalogo-container detalle-container">
+        <div class="contenido-fila detalle-card">
+            <div class="contenido-cuerpo">
+                <div class="contenido-col-izquierda">
+                    <div class="contenido-img">
+                        {% if contenido.imagen %}
+                            <img src="{{ contenido.imagen.url }}" alt="{{ contenido.nombre }}" class="detalle-img">
+                        {% else %}
+                            <img src="{% static 'image/usuario.png' %}" alt="Imagen por defecto" class="detalle-img">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="contenido-col-derecha">
+                    <h2 class="detalle-titulo">{{ contenido.nombre }}</h2>
+                    <p><strong>Categoría:</strong> {{ contenido.categoria }}</p>
+                    <p><strong>Fecha de estreno:</strong> {{ contenido.fecha_estreno|default:"No especificada" }}</p>
+                    {% if contenido.escritor %}<p><strong>Escritor:</strong> {{ contenido.escritor.nombre }}</p>{% endif %}
+                    {% if contenido.productora %}<p><strong>Productora:</strong> {{ contenido.productora.nombre }}</p>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-resenas">
+            <h3>Resenas de la comunidad</h3>
+            <hr style="margin-bottom: 20px;">
+
+            {% for review in reviews %}
+                <div class="resena-item">
+                    <p>
+                        <strong>{{ review.user.username }}</strong> 
+                        <span class="resena-meta">({{ review.fecha }})</span> - Puntuacion: <strong>{{ review.score }}/5</strong>
+                    </p>
+                    <p>{{ review.argumento }}</p>
+                </div>
+            {% empty %}
+                <p>Aún no hay resenas para este contenido. ¡Se el primero en escribir una!</p>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+                <div class="resena-form-container">
+                    <h4>Escribe tu resena</h4>
+                    <form method="POST" class="resena-form">
+                        {% csrf_token %}
+                        <div>
+                            <label for="score">Puntuacion (0.0 a 5.0):</label><br>
+                            <input type="number" step="0.1" min="0" max="5" name="score" required class="resena-input-score">
+                        </div>
+                        <div>
+                            <label for="argumento">Tu opinion:</label><br>
+                            <textarea name="argumento" rows="4" required class="resena-textarea"></textarea>
+                        </div>
+                        <button type="submit" class="btn-publicar">Publicar Resena</button>
+                    </form>
+                </div>
+            {% else %}
+                <p class="login-aviso">
+                    <a href="{% url 'login' %}">Inicia sesion</a> para poder dejar una resena en este contenido.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -4,9 +4,9 @@
       container_name: review_frontend
       restart: always
       environment:
-        POSTGRES_USER: 
-        POSTGRES_PASSWORD: 
-        POSTGRES_DB: 
+        POSTGRES_USER: ricardo
+        POSTGRES_PASSWORD: ricardo123
+        POSTGRES_DB: review_core
       ports:
         - "5432:5432"
       volumes:

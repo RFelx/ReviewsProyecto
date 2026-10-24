@@ -6,16 +6,23 @@ class UserProfile(models.Model):
     bio = models.TextField(blank=True)
     fecha_nacimiento = models.DateField(null=True, blank=True)
     nombre = models.CharField(max_length=100, blank=True)
+    imagen = models.ImageField(upload_to='perfiles/', default='image/usuario.png', blank=True, null=True)
 
 class Escritor(models.Model):
     nombre = models.CharField(max_length=100)
     bio = models.TextField(blank=True)
     fecha_nacimiento = models.DateField(null=True, blank=True)
+    imagen = models.ImageField(upload_to='escritores/', default='image/usuario.png', blank=True, null=True)
+    def __str__(self):
+            return self.nombre
 
 class Productora(models.Model):
     nombre = models.CharField(max_length=100)
     bio = models.TextField(blank=True)
     fecha_creacion = models.DateField(null=True, blank=True)
+    imagen = models.ImageField(upload_to='productoras/', default='image/usuario.png', blank=True, null=True)
+    def __str__(self):
+        return self.nombre
 
 class Contenido(models.Model):  
     nombre = models.CharField(max_length=100)
@@ -23,6 +30,9 @@ class Contenido(models.Model):
     fecha_estreno = models.DateField(null=True, blank=True)
     escritor = models.ForeignKey(Escritor, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Escritor")
     productora = models.ForeignKey(Productora, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Productora")
+    imagen = models.ImageField(upload_to='contenidos/', default='image/usuario.png', blank=True, null=True)
+    def __str__(self):
+        return self.nombre
 
 class Review(models.Model):
     contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE)
