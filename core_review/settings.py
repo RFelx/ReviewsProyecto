@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bkc#ndv*g4ozb^kbxw)3*g^mckpxellv$v@wly4)!3*m(j60)3'
+SECRET_KEY = 'prueba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'core_review.wsgi.application'
 DATABASES = {
     "default":{
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "review_core",
-        "USER": "ricardo",
-        "PASSWORD": "ricardo123",
+        "NAME": "",
+        "USER": "",
+        "PASSWORD": "",
         "HOST": "127.0.0.1",
         "PORT": "5432"
     }
